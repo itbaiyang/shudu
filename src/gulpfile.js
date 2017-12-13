@@ -13,7 +13,12 @@ gulp.task('less', () => {
     const less = require('gulp-less');
     gulp.src('./less/**/*.less')
         .pipe(less())
-        .pipe(gulp.dest('../www/less'))
+        .pipe(gulp.dest('../www/css'))
 });
 //编译javascript
 gulp.task('default', ['webpack','less']);
+
+gulp.task('watch', () => {
+    gulp.watch('less/**/*.less',['less']);
+    gulp.watch('js/**/*.js',['webpack']);
+})
